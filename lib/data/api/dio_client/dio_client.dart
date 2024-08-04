@@ -12,7 +12,9 @@ class DioClient {
     // Overrided settings
     _dio
       ..options.baseUrl = Constants().baseUr
-      ..options.headers = {HttpHeaders.contentTypeHeader: ContentType.json}
+      ..options.headers = {
+        HttpHeaders.contentTypeHeader: ContentType.json.mimeType
+      }
       ..options.connectTimeout = const Duration(milliseconds: 15000)
       ..options.receiveTimeout = const Duration(milliseconds: 15000)
       ..options.responseType = ResponseType.json;
