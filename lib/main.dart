@@ -1,4 +1,4 @@
-import 'package:bloc_test/presentation/home_screen.dart';
+import 'package:bloc_test/presentation/views/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
