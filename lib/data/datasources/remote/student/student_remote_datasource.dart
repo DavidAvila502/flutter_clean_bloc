@@ -1,6 +1,6 @@
-import 'package:bloc_test/domain/entities/student.dart';
+import 'package:bloc_test/data/models/student_model.dart';
 
 abstract class StudentRemoteDatasource {
-  Future<List<Student>> getStudents();
-  Future<Student> getStudentById(int id);
+  Future<List<StudentModel>> getStudents();
+  Future<StudentModel> getStudentById(int id);
 }

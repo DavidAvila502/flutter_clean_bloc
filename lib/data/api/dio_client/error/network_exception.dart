@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:bloc_test/config/error/network_error_model.dart';
+import 'package:bloc_test/data/api/dio_client/error/network_error_model.dart';
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 

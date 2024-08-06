@@ -1,12 +1,21 @@
+import 'package:bloc_test/data/datasources/mappers/entity_convertable.dart';
 import 'package:bloc_test/domain/entities/student.dart';
+import 'package:equatable/equatable.dart';
 
-class StudentModel extends Student {
+class StudentModel extends Equatable
+    with EntityConvertible<StudentModel, Student> {
+  final int id;
+  final String name;
+  final int age;
+  final String gender;
+  final String email;
+
   const StudentModel(
-      {required super.id,
-      required super.name,
-      required super.age,
-      required super.gender,
-      required super.email});
+      {required this.id,
+      required this.name,
+      required this.age,
+      required this.gender,
+      required this.email});
 
   factory StudentModel.fromJson(Map<String, dynamic> json) {
     return StudentModel(
@@ -25,5 +34,13 @@ class StudentModel extends Student {
       'gender': gender,
       'email': email
     };
+  }
+
+  @override
+  List<Object?> get props => [id, name, age, gender, email];
+
+  @override
+  Student toEntity() {
+    return Student(id: id, name: name, age: age, gender: gender, email: email);
   }
 }
