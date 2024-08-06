@@ -1,7 +1,5 @@
-import 'package:bloc_test/data/api/dio_client/dio_client.dart';
-import 'package:bloc_test/data/datasources/remote/student/student_remote_datasource_imp.dart';
-import 'package:bloc_test/data/repositories/student_repository_imp.dart';
 import 'package:bloc_test/domain/use_cases/student_use_cases.dart';
+import 'package:bloc_test/injection/student_usecases_injection.dart';
 import 'package:bloc_test/presentation/cubits/stuent/student_cubit.dart';
 import 'package:bloc_test/presentation/cubits/stuent/student_state.dart';
 import 'package:flutter/material.dart';
@@ -15,9 +13,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final StudentUseCases _studentUsecases = StudentUseCases(
-      StudentRepositoryImp(StudentRemoteDatasourceImp(DioClient())));
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +20,8 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text('Home screen'),
       ),
       body: BlocProvider(
-        create: (context) => StudentCubit(_studentUsecases)..fetchStudents(),
+        create: (context) =>
+            StudentCubit(getIt<StudentUseCases>())..fetchStudents(),
         child: SafeArea(
           child: Center(
             child: Column(
